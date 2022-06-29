@@ -1,24 +1,51 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
-]
+	{
+		path: '/',
+		name: 'home',
+		component: () => import('@/components/pages/AppHome.vue'),
+	},
+	{
+		path: '/shop',
+		name: 'shop',
+		component: () => import('@/views/AppShop.vue'),
+	},
+	{
+		path: '/blog',
+		name: 'blog',
+		component: () => import('@/views/AppBlog.vue'),
+	},
+	{
+		path: '/our-story',
+		name: 'our-story',
+		component: () => import('@/views/AppOurStory.vue'),
+	},
+	{
+		path: '/product/:id',
+		name: 'product',
+		component: () => import('@/components/pages/AppProduct.vue'),
+		props: true,
+	},
+	{
+		path: '/contactUs',
+		name: 'contactUs',
+		component: () => import('@/components/pages/layouts/contactUs.vue'),
+	},
+	{
+		path: '/my-cart',
+		name: 'my-cart',
+		component: () => import('@/components/pages/AppCart.vue'),
+	},
+	{
+		path: '/my-favorites',
+		name: 'my-favorites',
+		component: () => import('@/components/pages/AppFavorites.vue'),
+	},
+];
 
 const router = new VueRouter({
   mode: 'history',

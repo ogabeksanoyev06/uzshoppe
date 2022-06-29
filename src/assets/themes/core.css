@@ -1,0 +1,98 @@
+
+@font-face {
+	font-family: 'DM Sans';
+	src: url('@/assets/fonts/sfpro/SFPRODISPLAYREGULAR.OTF');
+	font-weight: 400;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'DM Sans';
+	src: url('@/assets/fonts/sfpro/SFPRODISPLAYBOLD.OTF');
+	font-weight: bold;
+	font-style: 700;
+}
+@font-face {
+	font-family: 'DM Sans';
+	src: url('@/assets/fonts/sfpro/SFPRODISPLAYMEDIUM.OTF');
+	font-weight: 500;
+	font-style: normal;
+}
+
+* {
+	scroll-behavior: smooth;
+	font-weight: 400;
+	font-family: 'DM Sans', sans-serif;
+	padding: 0;
+	margin: 0;
+	/* background: linear-gradient(0deg, #f2f4f6, #f2f4f6), */
+		/* linear-gradient(0deg, #f9f9f9, #f9f9f9), #fff; */
+}
+ul {
+	list-style: none;
+	margin-bottom: 0 !important;
+	padding-left: 0 !important;
+}
+a {
+	text-decoration: none;
+}
+html {
+	scroll-behavior: smooth;
+}
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: rgba(24, 160, 88, 0.15);
+	border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #36ad6a;
+	border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: rgba(24, 160, 88, 0.5);
+}
+
+.subtotal-title{
+font-weight: 500;
+font-size: 16px;
+line-height: 16px;
+color:#000;
+}
+.subtotal_price{
+font-weight: 500;
+font-size: 12px;
+line-height: 16px;
+color:#000;
+text-transform: capitalize;
+}
+.views_title{
+font-style: normal;
+font-weight: 600;
+font-size: 30px;
+line-height: 43px;
+color: #232c3c;
+margin: 10px 0;
+}
+.product_item_price{
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 26px;
+color: #36ad6a;
+margin-top: 6px;
+}
+.product_item_title{
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 26px;
+color: #000;
+margin-top: 3px;
+}
