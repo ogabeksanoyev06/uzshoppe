@@ -1,7 +1,7 @@
 <template>
 	<div class="shop">
 		<div class="container">
-			<div class="views_title">Shop The Latest</div>
+			<div class="views_title">{{$t("message.pageTitle2")}}</div>
 			<AppProductList />
 		</div>
 	</div>

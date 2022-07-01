@@ -1,8 +1,11 @@
 <template>
 	<div class="favorites">
 		<div class="container">
-			<div class="favorites_title">My favorites</div>
-			<div v-if="!myFavorites.length" class="noData d-flex flex-column align-items-center">
+			<div class="favorites_title">{{ $t('message.pageTitle') }}</div>
+			<div
+				v-if="!myFavorites.length"
+				class="noData d-flex flex-column align-items-center"
+			>
 				<img src="@/assets/image/shoppingCart.9c0394b.png" class="img-fluid" />
 				<p>Sevimli mahsulotlaringiz bo'shmi? Muammo yo'q!</p>
 				<p class="noText">
@@ -97,7 +100,7 @@ export default {
 	name: 'myFavorites',
 	components: {},
 	data() {
-		return {value1: null,};
+		return { value1: null };
 	},
 	methods: {
 		addToCart(product) {
@@ -234,9 +237,9 @@ export default {
 		margin-top: 12px;
 	}
 	.noFavorite p:nth-child(2) {
-	font-size: 20px;
-	font-weight: 600;
-	line-height: 30px;
-}
+		font-size: 20px;
+		font-weight: 600;
+		line-height: 30px;
+	}
 }
 </style>

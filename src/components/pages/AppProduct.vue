@@ -5,8 +5,8 @@
 			<div class="row align-items-center">
 				<div class="col-md-5 d-flex justify-content-center">
 					<div class="product_carusel_img w-100">
-						<el-carousel :interval="5000" style="max-width: 100%">
-							<el-carousel-item>
+						<el-carousel :interval="5000" arrow="always" style="max-width: 100%">
+							<el-carousel-item v-for="item in 4" :key="item">
 								<img :src="product.image" alt="">
 							</el-carousel-item>
 						</el-carousel>
@@ -30,22 +30,9 @@
 							</p>
 						</div>
 						<div class="product_buttons" style="margin-bottom: 50px">
-							<el-button-group size="small">
-								<el-button
-									type="primary"
-									size="small"
-									@click="incrementProduct(item.product)"
-									>+</el-button
-								>
-								<el-button size="small" disabled>1</el-button>
-								<el-button size="small" @click="decrementProduct(item.product)"
-									>-</el-button
-								>
-							</el-button-group>
 							<el-button
-								style="flex: 1"
 								size="medium"
-								class="ms-4"
+								class="w-75"
 								@click="addToCart"
 							>
 								ADD TO CART
@@ -202,7 +189,7 @@
 												<span class="day"> 21.06.2020 </span>
 											</div>
 											<div class="rate">
-												<n-rate color="#4fb233" readonly :default-value="3" />
+												<el-rate disabled disabled-void-color="#ff9900"   />
 											</div>
 											<div class="review_item_text">
 												{{ reviewComment.review }}
@@ -425,10 +412,15 @@ export default {
 	padding: 0.75rem 1rem;
 }
 // carusel
-.carousel-img {
-	width: 100%;
-	height: 400px;
-	object-fit: cover;
+.el-carousel__item{
+	display:flex;
+	justify-content: center;
+	align-items:center;
+}
+.el-carousel__item img {
+	max-width:300px;
+	width:100%;
+	height: 100%;
 }
 .review {
 	font-weight: 400;

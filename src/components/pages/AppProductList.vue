@@ -12,14 +12,13 @@
 							clearable
 							class="mb-3"
 						/>
-						<el-select filterable v-model="value" placeholder="Category">
+						<el-select v-model="value" >
 							<el-option
 								v-for="item in shopBy"
 								:key="item.value"
 								:label="item.label"
 								:value="item.label"
 								size="medium"
-								@click="sortByCategory(item.label)"
 							>
 							</el-option>
 						</el-select>
@@ -62,23 +61,17 @@ export default {
 		};
 	},
 	props: {},
-	methods: {
-		sortByCategory(category) {
-			this.categories = [];
-			console.log('vtgtgtgtgtgtgtgtgtg');
-			this.$store.state.products.forEach(product => {
-				if (product.category === category) {
-					this.categories.push(product);
-				}
-			});
-		},
-	},
+	methods: {},
 	computed: {
+	
 		filteredProduct() {
-			if (this.categories.length > 0) {
-				return this.categories;
-			} else {
+			let category = this.value;
+			if (category === 'all products') {
 				return this.$store.state.products;
+			} else {
+				return this.$store.state.products.filter(function (product) {
+					return product.category === category;
+				});
 			}
 		},
 

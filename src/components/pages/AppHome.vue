@@ -25,7 +25,7 @@
 							:key="item.id"
 						>
 							<img :src="require('@/assets/image/' + item.img)" alt="" />
-							<h5 class="fw-bolder">{{ item.title }}</h5>
+							<h5 class="fw-bolder">{{ $t(item.title) }}</h5>
 							<p>
 								{{ item.text }}
 							</p>

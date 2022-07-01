@@ -11,18 +11,15 @@
 						</ul>
 					</div>
 					<div class="language languageD">
-						<ul>
-							<li
-								v-for="(item, i) in itemsL"
-								:key="i"
-								@click="isActive(i)"
-								:class="{ active: i === activeItem }"
+						<el-select v-model="language" @change="changeLanguage()">
+							<el-option
+								v-for="item in itemsL"
+								:key="item.id"
+								:label="item.name"
+								:value="item.value"
 							>
-								<a href="#">
-									<span>{{ item.name }}</span>
-								</a>
-							</li>
-						</ul>
+							</el-option>
+						</el-select>
 					</div>
 				</div>
 			</div>
@@ -222,18 +219,15 @@
 						</ul>
 						<ul class="mobile__menu pt-4" :class="{ active_menu: menu_active }">
 							<div class="language languageM">
-								<ul>
-									<li
-										v-for="(item, i) in itemsL"
-										:key="i"
-										@click="isActive(i)"
-										:class="{ active: i === activeItem }"
+								<el-select v-model="language" @change="changeLanguage()">
+									<el-option
+										v-for="item in itemsL"
+										:key="item.id"
+										:label="item.name"
+										:value="item.value"
 									>
-										<a href="#">
-											<span>{{ item.name }}</span>
-										</a>
-									</li>
-								</ul>
+									</el-option>
+								</el-select>
 							</div>
 							<hr class="me-4" />
 							<li
@@ -308,6 +302,7 @@
 
 <script>
 import MiniCart from '@/components/pages/MiniCart.vue';
+
 export default {
 	name: 'app-header',
 	components: {
@@ -321,9 +316,9 @@ export default {
 				{ title: 'Our-story', name: 'our-story', id: 2 },
 			],
 			itemsL: [
-				{ name: 'Ўзбекча', id: 0 },
-				{ name: 'O`zbekcha', id: 1 },
-				{ name: 'Русский', id: 2 },
+				{ name: 'Ўзбекча', value: 'uz', id: 0 },
+				{ name: "O'zbekcha", value: 'uzb', id: 1 },
+				{ name: 'Русский', value: 'ru', id: 2 },
 			],
 			activeItem: 0,
 			mobile_items: [
@@ -339,9 +334,14 @@ export default {
 			menu_active: false,
 			cart_active: false,
 			outerVisible: false,
+			language: null,
 		};
 	},
 	methods: {
+		changeLanguage() {
+			localStorage.setItem('lang', this.language);
+			window.location.reload();
+		},
 		close_cart() {
 			this.cart_active = !this.cart_active;
 		},
@@ -355,11 +355,20 @@ export default {
 		},
 	},
 	computed: {},
+	created() {
+		if (localStorage.getItem('lang' == null)) {
+			localStorage.setItem('lang', 'uz');
+		}
+		this.language = localStorage.getItem('lang');
+	},
 	mounted() {},
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+.el-select-dropdown {
+	z-index: 99999 !important;
+}
 //topheader
 .top_header {
 	background: rgba(65, 76, 160, 0.05);
@@ -369,12 +378,14 @@ export default {
 	padding-left: 0;
 	list-style: none;
 	display: flex;
+	flex-wrap: wrap;
+	color: rgba(26, 25, 28, 0.49);
 }
 .help ul li {
 	margin-right: 20px;
 	cursor: pointer;
 }
-.help ul li a:hover {
+.help ul li:hover {
 	color: #232c3c;
 }
 .help ul li a {
@@ -391,15 +402,15 @@ export default {
 	margin-left: 20px;
 	display: inline-block;
 }
-.language ul li a {
+.language ul li span {
 	font-size: 14px;
 	font-weight: 400;
 	color: rgba(26, 25, 28, 0.49);
 }
-.language ul li a:hover {
+.language ul li:hover span {
 	color: #232c3c;
 }
-.language ul li.active a {
+.language ul li.active span {
 	color: #232c3c !important;
 }
 //header
@@ -440,7 +451,7 @@ export default {
 .menu_items {
 	display: flex;
 	align-content: center;
-	margin-left:16px;
+	margin-left: 16px;
 }
 .menu_items li {
 	margin-right: 20px;
@@ -566,6 +577,14 @@ export default {
 	visibility: visible;
 	display: block;
 }
+.fix-header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background: rgba(65, 76, 160, 0.05);
+	padding: 10px 0;
+}
 
 @media (max-width: 768px) {
 	.header__desk_nav {
@@ -573,7 +592,7 @@ export default {
 	}
 	.language ul li {
 		margin-left: 0px;
-		margin-right:0px;
+		margin-right: 0px;
 	}
 	.languageD {
 		display: none;

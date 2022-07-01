@@ -1,7 +1,7 @@
 <template>
 	<div class="cart">
 		<div class="container">
-			<div class="cart_title">Shopping Cart</div>
+			<div class="cart_title">{{$t("message.pageTitle3")}}</div>
 			<div
 				v-if="!cart.length"
 				class="noData d-flex flex-column align-items-center"
