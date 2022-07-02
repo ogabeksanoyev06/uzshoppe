@@ -27,12 +27,12 @@
 							<div class="cart_item_image">
 								<img :src="item.product.image" alt="" />
 							</div>
-							<div class="cart_item_info">
+							<div class="cart_item_info cart_item_info_desk ">
 								<span class="info_name">{{ item.product.title }}</span>
 								<span class="info_text">{{ item.product.description }}</span>
 								<span class="info_price">$ {{ item.product.price }}</span>
 							</div>
-							<div class="cart_item_quantity">
+							<div class="cart_item_quantity cart_item_quantity_desk">
 								<el-button-group size="mini">
 									<el-button type="primary" size="mini" @click="incrementProduct(item.product)">+</el-button>
 									<el-button  size="mini" disabled>{{ item.quantity }}</el-button >
@@ -233,7 +233,7 @@ export default {
 	margin-bottom: 30px;
 	max-width: 300px;
 }
-noData .noText {
+.noData .noText {
 	font-weight: 500;
 	font-size: 16px;
 	line-height: 18px;
@@ -292,6 +292,16 @@ noData .noText {
 	.cart_totals {
 		position: sticky;
 		top: 60px;
+	}
+}
+@media (max-width:1200px){
+	.cart_item_info_desk,
+	.cart_item_quantity_desk{
+		display:none;
+	}
+	.cart_item_remove{
+		flex:1;
+		justify-content:flex-end;
 	}
 }
 </style>

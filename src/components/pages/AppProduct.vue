@@ -375,22 +375,17 @@ export default {
 		decrementProduct(product) {
 			this.$store.dispatch('decrementProduct', product);
 		},
-		async getProduct() {
-			this.$route.params.id;
-			this.loading = true;
-			try {
-				await axios
-					.get(`https://fakestoreapi.com/products/${this.$route.params.id}`)
-					.then(response => {
-						if (!response.error && response.data) {
-							this.product = response.data;
-							this.loading = false;
-						}
-					});
-			} catch (error) {
-				console.log(error);
-			}
-		},
+		getProduct() {
+    this.$route.params.id
+    axios.get(`https://fakestoreapi.com/products/${this.$route.params.id}`).then(res=>{
+      if(res.data){
+        this.product = res.data
+        this.$store.dispatch('getProductsCategory',this.product.category)
+      }
+    }).catch(error => {
+      console.log(error);
+    })
+    },
 	},
 	computed: {
 		productsCategory() {

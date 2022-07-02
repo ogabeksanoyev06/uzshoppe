@@ -31,20 +31,7 @@
 						<div class="fItem_info_content d-flex flex-wrap">
 							<div class="d-flex align-items-center" style="margin-right: 20px">
 								<span class="badge">{{ item.product.price }} 000 so'm</span>
-								<el-rate v-model="value1"></el-rate>
-								<span
-									style="
-										font-weight: 600;
-										font-size: 12px;
-										line-height: 14px;
-										display: flex;
-										align-items: center;
-										color: #95abc6;
-										margin-left: 10px;
-									"
-								>
-									(1200)
-								</span>
+								<el-rate class="d-flex align-items-center " v-model="value1"></el-rate>
 							</div>
 							<div class="fBtn d-flex align-items-center">
 								<button
