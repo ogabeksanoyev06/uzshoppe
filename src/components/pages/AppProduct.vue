@@ -1,7 +1,6 @@
 <template>
 	<div class="product" v-if="product">
-		<AppLoading v-if="loading"/>
-		<div class="container" v-else>
+		<div class="container">
 			<div class="row align-items-center">
 				<div class="col-md-5 d-flex justify-content-center">
 					<div class="product_carusel_img w-100">
@@ -305,7 +304,6 @@
 
 <script>
 import axios from 'axios';
-import AppLoading from '@/components/layouts/auth/AppLoading.vue';
 export default {
 	name: 'AppProduct',
 	data() {
@@ -322,7 +320,7 @@ export default {
 			reviewComments: [],
 		};
 	},
-	components: {  AppLoading },
+	components: {   },
 	methods: {
 		addToCart() {
 			this.$store.dispatch('addProductToCart', {

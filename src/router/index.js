@@ -45,6 +45,7 @@ const routes = [
 		name: 'my-favorites',
 		component: () => import('@/components/pages/AppFavorites.vue'),
 	},
+	
 ];
 
 const router = new VueRouter({
